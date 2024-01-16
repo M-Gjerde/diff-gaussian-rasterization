@@ -10,19 +10,21 @@
  */
 
 #include <math.h>
-#include <torch/extension.h>
 #include <cstdio>
 #include <sstream>
 #include <iostream>
 #include <tuple>
 #include <stdio.h>
-#include <cuda_runtime_api.h>
 #include <memory>
-#include "cuda_rasterizer/config.h"
-#include "cuda_rasterizer/rasterizer.h"
 #include <fstream>
 #include <string>
 #include <functional>
+
+#include <cuda_runtime_api.h>
+#include <torch/torch.h>
+
+#include "cuda_rasterizer/config.h"
+#include "cuda_rasterizer/rasterizer.h"
 
 std::function<char*(size_t N)> resizeFunctional(torch::Tensor& t) {
     auto lambda = [&t](size_t N) {

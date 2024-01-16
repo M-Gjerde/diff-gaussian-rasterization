@@ -8,13 +8,15 @@
  *
  * For inquiries contact  george.drettakis@inria.fr
  */
+#ifndef MULTISENSE_VIEWER_RASTERIZE_POINTS_H
+#define MULTISENSE_VIEWER_RASTERIZE_POINTS_H
 
 #pragma once
-#include <torch/extension.h>
 #include <cstdio>
 #include <tuple>
 #include <string>
-	
+#include <torch/torch.h>
+
 std::tuple<int, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor, torch::Tensor>
 RasterizeGaussiansCUDA(
 	const torch::Tensor& background,
@@ -65,3 +67,5 @@ torch::Tensor markVisible(
 		torch::Tensor& means3D,
 		torch::Tensor& viewmatrix,
 		torch::Tensor& projmatrix);
+
+#endif // MULTISENSE_VIEWER_RASTERIZE_POINTS_H
